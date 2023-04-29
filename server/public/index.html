@@ -21,17 +21,6 @@
         let socket
         document.addEventListener('DOMContentLoaded', function() {
             socket = io()
-
-            socket.on('message', function(msg) {
-                document.querySelector('#message').innerText = msg
-            })
-
-            document.querySelector('button').addEventListener('click', function(e) {
-                e.preventDefault()
-                console.log(Number(document.querySelector('#m').value))
-                socket.emit('talkback', Number(document.querySelector('#m').value))
-                document.querySelector('#m').value = '' 
-            })
         })
     </script>
     <script src="boid.js"></script>
