@@ -47,7 +47,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 216.0, 530.0, 50.0, 36.0 ],
-					"text" : "15.185009"
+					"text" : "17.004348"
 				}
 
 			}
@@ -79,12 +79,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-38",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 121.0, 522.0, 50.0, 22.0 ],
-					"text" : "-143.97"
+					"patching_rect" : [ 121.0, 522.0, 50.0, 36.0 ],
+					"text" : "87.572661"
 				}
 
 			}
@@ -122,7 +123,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 39.0, 522.0, 50.0, 36.0 ],
-					"text" : "3.778526"
+					"text" : "18.311907"
 				}
 
 			}
