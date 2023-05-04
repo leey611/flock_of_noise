@@ -72,11 +72,7 @@ function setup() {
 }
 
 function draw() {
-  // here we're using setUniform() to send our uniform values to the shader
-  theShader.setUniform("resolution", [width, height]);
-  theShader.setUniform("time", millis() / 1000.0);
-  theShader.setUniform("mouse", [mouseX, map(mouseY, 0, height, height, 0)]);
-
+ 
   webGLCanvas.shader(theShader);
   theShader.setUniform("u_resolution", [width / width, height / height]);
   theShader.setUniform("u_time", millis() / 1000);
@@ -112,11 +108,11 @@ function draw() {
   socket.emit('pitch', flock[2].velocity.x)
 
   
-  cacheGraphic.clear()
+  //cacheGraphic.clear()
   //drawKeypoints();
   //drawSkeleton();
   // drawPoseCenter(originalGraphics, eyeGraphics)
-  image(cacheGraphic,0,0, width, height)
+  // image(cacheGraphic,0,0, width, height)
   // push()
   // fill(0,0,255)
   // ellipse(attractor.x, attractor.y, 50,50)
