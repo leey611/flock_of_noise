@@ -93,15 +93,17 @@ class Boid {
     return steering;
   }
 	
-	attractCenter(attractor) {
+	attractCenter(attractor, d) {
 		const centerVec = attractor//acreateVector(attractor.x, height/2)
     let force = p5.Vector.sub(centerVec,this.position);
 		let distance = force.mag()
-		if (distance > 450) {
-            this.maxSpeed = 35;
-			force.setMag(0.1)
+		if (distance > d) {
+            this.maxSpeed = 10;
+            this.maxForce = 1;
+			force.setMag(0.5)
 		} else {
             this.maxSpeed = 3;
+            this.maxForce = 0.2;
 			force.mult(0)
 		}
     //let distanceSq = constrain(force.magSq(), 100, 1000);
@@ -123,12 +125,12 @@ class Boid {
     return force
   }
 
-  flock(boids, attractor) {
+  flock(boids, attractor, d) {
     let alignment = this.align(boids);
     let cohesion = this.cohesion(boids);
     let separation = this.separation(boids);
 		
-		let centerForce = this.attractCenter(attractor);
+		let centerForce = this.attractCenter(attractor, d);
     let separationCenter = this.separateCenter(attractor)
 
     // alignment.mult(alignSlider.value());

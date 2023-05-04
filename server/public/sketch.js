@@ -11,6 +11,7 @@ let eyeGraphics;
 const flock = [];
 
 let attractor
+let circleAreaD
 
 let video;
 let cacheGraphic
@@ -31,7 +32,7 @@ function setup() {
   // shaders require WEBGL mode to work
   // createCanvas(1000, 1000);
   createCanvas(displayWidth, displayHeight);
-  //noCursor()
+  noCursor()
   noStroke();
 
   webGLCanvas = createGraphics(width, height, WEBGL);
@@ -64,6 +65,7 @@ function setup() {
     poses = results;
   });
   attractor = createVector(width/2, height/2)
+  circleAreaD = poses.length ? 150 : 450
   for (let i = 0; i < 40; i++) {
     flock.push(new Boid());
   }
@@ -88,9 +90,10 @@ function draw() {
   originalGraphics.background(0);
   eyeGraphics.clear();
   //drawPoseCenter()
+  circleAreaD = poses.length ? 150 : 450
   for (let boid of flock) {
     boid.edges();
-    boid.flock(flock, attractor);
+    boid.flock(flock, attractor, circleAreaD);
     boid.update();
     boid.show(originalGraphics, eyeGraphics);
   }
@@ -110,8 +113,8 @@ function draw() {
 
   
   cacheGraphic.clear()
-  drawKeypoints();
-  drawSkeleton();
+  //drawKeypoints();
+  //drawSkeleton();
   // drawPoseCenter(originalGraphics, eyeGraphics)
   image(cacheGraphic,0,0, width, height)
   // push()
@@ -187,7 +190,7 @@ function drawPoseCenter(g, eyeG) {
   //g.strokeWeight(6);
   
 
-  g.stroke("yellow")
+  g.stroke(150) //#1F37D6
   //g.fill("yellow")
   //g.triangle(-this.r, -this.r / 2, -this.r, this.r / 2, this.r, 0);
   g.strokeWeight(90)
@@ -202,7 +205,7 @@ function drawPoseCenter(g, eyeG) {
       eyeG.push()
         eyeG.translate(-15, -3)
         eyeG.rotate(PI/6)
-        eyeG.fill(0)
+        eyeG.fill(255)
         eyeG.arc(0,0,25,25,0,PI)
         // eyeG.fill(50)
         // eyeG.arc(0,0,15,15,0,PI)
@@ -213,7 +216,7 @@ function drawPoseCenter(g, eyeG) {
       eyeG.push()
         eyeG.translate(15, -3)
         eyeG.rotate(-PI/6)
-        eyeG.fill(0)
+        eyeG.fill(255)
         eyeG.arc(0,0,25,25,0,PI)
         // eyeG.fill(50)
         // eyeG.arc(0,0,15,15,0,PI)
